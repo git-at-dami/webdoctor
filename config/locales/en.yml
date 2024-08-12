@@ -1,0 +1,13 @@
+en:
+  application:
+    title: Nua Messaging
+  common:
+    back: Back
+  messages:
+    index:
+      title: Inbox
+      message:
+        time_distance: "%{time_ago} ago"
+    show:
+      reply: Reply
+      lost_rescription: I've lost my prescription, Please issue a new one at a charge of €10

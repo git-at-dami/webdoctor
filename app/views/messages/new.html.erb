@@ -1,0 +1,35 @@
+<div class="card mt-5">
+  <h5 class="card-header">
+    New Message
+  </h5>
+
+  <div class="card-body">
+    <%= form_for @message do |f| %>
+      <% if @message.errors.any? %>
+        <div class="alert alert-danger"> 
+          <ul>
+            <% @message.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <% if @parent_message %>
+        <div class="mb-3">
+          Reply to: <em> <%= @parent_message.body %> </em>,   &nbsp;   &nbsp;    <b>from: <%= @parent_message.sender.full_name %></b>
+        </div>
+      <% end %>
+      
+      <div class="mb-3">
+        <%= f.text_area :body, class: "form-control", rows: 3 %>
+        <%= f.hidden_field :parent_message_id, value: @parent_message_id %>
+      </div>
+
+      <div class="d-flex">
+        <%= f.submit 'Send Message', class: 'btn btn-primary me-auto' %>
+        <%= link_to t('common.back'), :back, class: 'btn btn-link' %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="card mt-5">
+  <h5 class="card-header">
+    Select User Type
+  </h5>
+
+  <div class="card-body">
+    <% User::ACCOUNT_TYPES.each do |type| %>
+      <%= link_to type.capitalize, messages_path(user_type: type), class: 'btn btn-link mb-3' %>
+    <% end %>
+  </div>
+</div>

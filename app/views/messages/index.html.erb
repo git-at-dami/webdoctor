@@ -1,0 +1,18 @@
+<h4><%= t('.title') %></h4>
+<div class="list-group w-auto">
+  <% @messages.each do |message| %>
+    <%= link_to message_path(message, user_type: params[:user_type]), class: 'list-group-item list-group-item-action d-flex gap-3 py-3' do %>
+      <div class="d-flex gap-2 w-100 justify-content-between">
+        <div>
+          <h6 class="mb-0"><%= message.outbox.user.first_name %> <%= message.outbox.user.last_name %></h6>
+          <p class="mb-0 opacity-75"><%= message.body.truncate(200) %></p>
+        </div>
+        <small class="opacity-50 text-nowrap"><%= t('.message.time_distance', time_ago: time_ago_in_words(message.created_at)) %></small>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class='mt-4'> 
+    <%= paginate @messages %>
+  </div>
+</div>
